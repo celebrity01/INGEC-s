@@ -8,8 +8,9 @@ const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
 function extractKeywords(message) {
   if (!message) return [];
-  // simple NLP utility
-  return message.split(/\s+/).filter(word => word.length > 3);
+  // simple NLP utility: Remove punctuation to avoid breaking PostgREST .or() syntax
+  const cleanMessage = message.replace(/[^\w\s]/gi, '');
+  return cleanMessage.split(/\s+/).filter(word => word.length > 3);
 }
 
 export async function chatHandler(req, res) {

@@ -1,0 +1,34 @@
+services:
+  # Node.js Express Backend
+  - type: web
+    name: ingec-server
+    env: node
+    rootDir: server
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_KEY
+        sync: false
+      - key: SUPABASE_DB_URL
+        sync: false
+      - key: ANTHROPIC_API_KEY
+        sync: false
+
+  # React Vite Frontend
+  - type: web
+    name: ingec-client
+    env: static
+    rootDir: client
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: VITE_SUPABASE_URL
+        sync: false
+      - key: VITE_SUPABASE_KEY
+        sync: false
+      - key: VITE_GOOGLE_MAPS_KEY
+        sync: false
+      - key: VITE_API_URL
+        value: https://ingec-server.onrender.com/api # Link to the backend service deployed above
