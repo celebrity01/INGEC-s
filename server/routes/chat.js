@@ -1,10 +1,11 @@
 import { supabase } from '../lib/supabase.js';
-import Anthropic from '@anthropic-ai/sdk';
+import { GoogleGenerativeAI } from '@google/generative-ai';
 import dotenv from 'dotenv';
 
 dotenv.config();
 
-const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+// Initialize Gemini API
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || 'dummy_key');
 
 function extractKeywords(message) {
   if (!message) return [];
@@ -34,7 +35,7 @@ export async function chatHandler(req, res) {
     }
 
     // 3. Build the system prompt with injected data
-    const systemPrompt = `
+    const systemInstruction = `
 You are Nkechi, INGEC Intelligence Assistant.
 Answer ONLY using the project data below. Never fabricate.
 Flag abandoned projects with [ABANDONMENT ALERT].
@@ -43,21 +44,22 @@ Flag protected projects with [PROTECTED - Cannot be cancelled].
 PROJECT DATA:
 ${JSON.stringify(projects || [], null, 2)}`;
 
-    // 4. Call Claude API
-    const response = await anthropic.messages.create({
-      model: 'claude-3-5-sonnet-20240620',
-      max_tokens: 1000,
-      system: systemPrompt,
-      messages: [{ role: 'user', content: message }],
+    // 4. Call Gemini API
+    const model = genAI.getGenerativeModel({
+      model: "gemini-1.5-flash",
+      systemInstruction: systemInstruction,
     });
 
+    const result = await model.generateContent(message);
+    const replyText = result.response.text();
+
     res.json({
-      reply: response.content[0].text,
+      reply: replyText,
       projects_referenced: (projects || []).map(p => p.id),
       has_abandoned: (projects || []).some(p => p.status === 'ABANDONED'),
     });
   } catch (err) {
-    console.error(err);
+    console.error("Chat Error:", err);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 }
