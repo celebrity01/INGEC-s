@@ -75,6 +75,20 @@ CREATE TABLE IF NOT EXISTS contractors (
 ALTER TABLE projects
 ADD COLUMN contractor_id UUID REFERENCES contractors(id);
 
+-- Auto-increment citizen flags on new report
+CREATE OR REPLACE FUNCTION increment_flags_on_report()
+RETURNS TRIGGER AS $$
+BEGIN
+  UPDATE projects
+  SET citizen_flags = citizen_flags + 1
+  WHERE id = NEW.project_id;
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trigger_increment_citizen_flags
+AFTER INSERT ON citizen_reports
+FOR EACH ROW EXECUTE FUNCTION increment_flags_on_report();
 
 -- Enable RLS on all tables
 ALTER TABLE projects         ENABLE ROW LEVEL SECURITY;

@@ -2,25 +2,25 @@
 > ingec-platform@1.0.0 start
 > concurrently "npm run start:server" "npm run start:client"
 
-[0]
-[0] > ingec-platform@1.0.0 start:server
-[0] > npm run start --workspace=server
-[0]
 [1]
 [1] > ingec-platform@1.0.0 start:client
 [1] > npm run dev --workspace=client
 [1]
 [0]
-[0] > ingec-server@1.0.0 start
-[0] > node server.js
+[0] > ingec-platform@1.0.0 start:server
+[0] > npm run start --workspace=server
 [0]
 [1]
 [1] > ingec-client@0.0.0 dev
 [1] > vite
 [1]
+[0]
+[0] > ingec-server@1.0.0 start
+[0] > node server.js
+[0]
 [0] INGEC Server running on port 5001
 [1]
-[1]   VITE v5.2.0  ready in 828 ms
+[1]   VITE v5.2.0  ready in 917 ms
 [1]
 [1]   ➜  Local:   http://localhost:3000/
 [1]   ➜  Network: use --host to expose
@@ -32,20 +32,10 @@
 [0]   message: 'Invalid API key',
 [0]   hint: 'Double check your Supabase `anon` or `service_role` API key.'
 [0] }
-[1] 5:49:03 PM [vite] hmr update /src/pages/Dashboard.jsx, /src/index.css
-[0] {
-[0]   message: 'Invalid API key',
-[0]   hint: 'Double check your Supabase `anon` or `service_role` API key.'
-[0] }
-[0] {
-[0]   message: 'Invalid API key',
-[0]   hint: 'Double check your Supabase `anon` or `service_role` API key.'
-[0] }
-[1] 7:02:18 PM [vite] hmr update /src/App.jsx, /src/index.css
-[1] 7:03:45 PM [vite] hmr update /src/pages/Dashboard.jsx, /src/index.css
-[1] 7:04:28 PM [vite] hmr update /src/components/ProjectCard.jsx, /src/index.css
-[1] 7:05:09 PM [vite] hmr update /src/pages/ProjectDetail.jsx, /src/index.css
-[1] 7:05:42 PM [vite] hmr update /src/components/CitizenReport.jsx, /src/index.css
+[1] 7:16:48 PM [vite] hmr update /src/components/CitizenReport.jsx, /src/index.css
+[1] 7:17:21 PM [vite] hmr update /src/pages/AdminDashboard.jsx, /src/index.css
+[1] 7:17:58 PM [vite] hmr update /src/pages/AdminRegister.jsx, /src/index.css
+[1] 7:18:45 PM [vite] hmr update /src/pages/ProjectDetail.jsx, /src/index.css
 [0] Terminated
 [0] npm error Lifecycle script `start` failed with error:
 [0] npm error code 143
@@ -54,5 +44,5 @@
 [0] npm error location /app/server
 [0] npm error command failed
 [0] npm error command sh -c node server.js
-[1] npm run start:client exited with code 0
 [0] npm run start:server exited with code 143
+[1] npm run start:client exited with code 0
