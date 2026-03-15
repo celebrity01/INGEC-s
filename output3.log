@@ -35,3 +35,19 @@
 [0]   message: 'Invalid API key',
 [0]   hint: 'Double check your Supabase `anon` or `service_role` API key.'
 [0] }
+[1] 5:40:47 PM [vite] hmr update /src/index.css, /src/components/INGECMap.jsx
+[1] 5:40:47 PM [vite] page reload src/lib/geocode.js
+[1] 5:41:24 PM [vite] hmr update /src/components/INGECMap.jsx, /src/index.css
+[1] 5:42:33 PM [vite] .env changed, restarting server...
+[1] Re-optimizing dependencies because lockfile has changed
+[1] 5:42:34 PM [vite] server restarted.
+[0] Terminated
+[0] npm error Lifecycle script `start` failed with error:
+[0] npm error code 143
+[0] npm error path /app/server
+[0] npm error workspace ingec-server@1.0.0
+[0] npm error location /app/server
+[0] npm error command failed
+[0] npm error command sh -c node server.js
+[1] npm run start:client exited with code 0
+[0] npm run start:server exited with code 143

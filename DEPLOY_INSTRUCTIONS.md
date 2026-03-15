@@ -34,7 +34,6 @@ Since Render Blueprints (`render.yaml`) require a credit card, you can deploy bo
 5. Click **Advanced**. Under **Environment Variables**, click **Add Environment Variable** for each of the following (from your local `client/.env`):
    - Key: `VITE_SUPABASE_URL` | Value: `your-url`
    - Key: `VITE_SUPABASE_KEY` | Value: `your-key`
-   - Key: `VITE_GOOGLE_MAPS_KEY` | Value: `your-maps-key`
    - Key: `VITE_API_URL` | Value: `https://ingec-server.onrender.com/api` (Replace with the URL generated in Step 1!)
    - *Optional:* Add the `REACT_APP_` equivalents as well.
 6. Click **Create Static Site**.

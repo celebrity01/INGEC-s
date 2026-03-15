@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { supabase } from '../lib/supabase';
 import INGECMap from '../components/INGECMap';
 import ProjectCard from '../components/ProjectCard';
-import { Search, Filter, RefreshCw, BarChart3, Users, Building, ShieldCheck, MapPin } from 'lucide-react';
+import { Search, Filter, RefreshCw, ChartColumn, Users, Building, ShieldCheck, MapPin } from 'lucide-react';
 
 export default function Dashboard() {
   const [projects, setProjects] = useState([]);
@@ -117,7 +117,7 @@ export default function Dashboard() {
           {/* Stats Bar */}
           <div className="flex flex-wrap gap-4 text-sm font-medium">
              <div className="bg-green-800 rounded-lg px-4 py-2 flex items-center gap-2 border border-green-600 shadow-inner">
-               <BarChart3 size={18} className="text-yellow-400"/>
+               <ChartColumn size={18} className="text-yellow-400"/>
                <div>
                   <span className="block text-xs text-green-200">Total Budget Tracked</span>
                   <span className="text-lg font-bold">₦{(stats.totalBudget / 1000000000).toFixed(2)}B</span>
