@@ -1,0 +1,37 @@
+
+> ingec-platform@1.0.0 start
+> concurrently "npm run start:server" "npm run start:client"
+
+[1]
+[1] > ingec-platform@1.0.0 start:client
+[1] > npm run dev --workspace=client
+[1]
+[0]
+[0] > ingec-platform@1.0.0 start:server
+[0] > npm run start --workspace=server
+[0]
+[1]
+[1] > ingec-client@0.0.0 dev
+[1] > vite
+[1]
+[0]
+[0] > ingec-server@1.0.0 start
+[0] > node server.js
+[0]
+[0] (node:16599) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+[0] (Use `node --trace-deprecation ...` to show where the warning was created)
+[0] INGEC Server running on port 5001
+[1] Re-optimizing dependencies because lockfile has changed
+[1]
+[1]   VITE v5.2.0  ready in 302 ms
+[1]
+[1]   ➜  Local:   http://localhost:3000/
+[1]   ➜  Network: use --host to expose
+[0] {
+[0]   message: 'Invalid API key',
+[0]   hint: 'Double check your Supabase `anon` or `service_role` API key.'
+[0] }
+[0] {
+[0]   message: 'Invalid API key',
+[0]   hint: 'Double check your Supabase `anon` or `service_role` API key.'
+[0] }
